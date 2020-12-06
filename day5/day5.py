@@ -1,17 +1,6 @@
 with open('day5input.txt') as txtfile:
     input_values = [item.strip("\n") for item in txtfile]
 
-    rows = 128
-    columns = 8
-    seating_grid = []
-    for row in range(128):
-        seating_grid.append([])
-        for col in range(8):
-            seating_grid[row].append([col])
-
-    devValue = "FBFBBFFRLR"
-    devValue2 = ["FFFFFBBRLL", "FBFBBFFRLR"]
-
     def getSeat(boardingpass):
         FBvalue = boardingpass[:7]
         LRvalue = boardingpass[7:]
@@ -53,9 +42,7 @@ with open('day5input.txt') as txtfile:
             newHigh = r * 8 + c
             if newHigh > highestID:
                 highestID = newHigh
-
         return highestID
     
-    print(getSeat(devValue))
     #part 1 solution under
     print(getHighestID(input_values))
