@@ -1,6 +1,7 @@
 with open('day5input.txt') as txtfile:
     input_values = [item.strip("\n") for item in txtfile]
 
+    #part 1 solution under
     def getSeat(boardingpass):
         FBvalue = boardingpass[:7]
         LRvalue = boardingpass[7:]
@@ -44,5 +45,25 @@ with open('day5input.txt') as txtfile:
                 highestID = newHigh
         return highestID
     
-    #part 1 solution under
+    
     print(getHighestID(input_values))
+
+    #part 2 solution under
+    def getAllId(list):
+        allId = []
+        for item in list:
+            r,c, boardingpass = getSeat(item)
+            seatID = r * 8 + c
+            allId.append(seatID)
+        allId.sort()
+        return allId
+
+    def findMissingId(list):
+        for i in range(len(list)):
+            try:
+                if list[i] + 1 != list[i +1]:
+                    print("missing value between {} and {}".format(list[i], list[i +1]))
+            except IndexError:
+                print("Error caught!")
+
+    findMissingId(getAllId(input_values))
